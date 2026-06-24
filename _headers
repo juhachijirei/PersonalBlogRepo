@@ -1,0 +1,22 @@
+# Cloudflare Pages custom headers
+# Docs: https://developers.cloudflare.com/pages/configuration/headers/
+
+/assets/css/*
+  Cache-Control: public, max-age=604800, immutable
+
+/assets/js/*
+  Cache-Control: public, max-age=604800, immutable
+
+/assets/images/*
+  Cache-Control: public, max-age=2592000, immutable
+
+/rss.xml
+  Content-Type: application/rss+xml; charset=utf-8
+
+/article-template.html
+  X-Robots-Tag: noindex
+
+/*.html
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin

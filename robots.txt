@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://void.pages.dev/sitemap.xml

@@ -1,0 +1,5 @@
+# Cloudflare Pages redirects
+# Docs: https://developers.cloudflare.com/pages/configuration/redirects/
+
+# Optional: serve clean URLs without .html
+# /posts/negative-space    /posts/negative-space.html    200
