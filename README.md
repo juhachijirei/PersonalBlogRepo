@@ -1,4 +1,4 @@
-# Void Blog
+# 十八字令的博客
 
 多页静态个人博客，部署目标：Cloudflare Pages + Cloudflare Workers。
 
@@ -49,28 +49,22 @@
 
 ## 本地测试
 
-### 纯静态预览（首页可用，文章页不可用）
-
-```bash
-python -m http.server 8080
-```
-
-访问 `http://localhost:8080`。首页会回退到读取 `/data/articles.json`，文章页因为依赖 Worker 所以看不到。
-
-### 完整预览（需要 Worker）
-
-安装 [Wrangler](https://developers.cloudflare.com/workers/wrangler/)：
+完整动态渲染需要 Worker，所以用 Wrangler：
 
 ```bash
 npx wrangler pages dev .
 ```
 
-然后访问 `http://localhost:8788`。
+访问 `http://localhost:8788`。
 
-## 部署到 Cloudflare Pages
+## 部署
 
-1. 将整个目录推送到 Git 仓库。
-2. 在 Cloudflare Pages 中连接该仓库。
-3. 构建设置留空（纯静态，无需构建命令）。
-4. Pages 会自动识别 `_worker.js` 并作为 Worker 入口。
-5. 默认域名 `https://<project>.pages.dev/` 即可使用。
+推送到 Git 后 Cloudflare Pages 会自动部署：
+
+```bash
+git add .
+git commit -m "update"
+git push
+```
+
+线上地址：https://juhachijisblog.pages.dev/

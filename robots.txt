@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://void.pages.dev/sitemap.xml
+Sitemap: https://juhachijisblog.pages.dev/sitemap.xml
