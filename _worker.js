@@ -71,6 +71,26 @@ async function renderArticle(slug, request, env) {
   const prevUrl = content.prevSlug ? `/posts/${content.prevSlug}.html` : '#';
   const nextUrl = content.nextSlug ? `/posts/${content.nextSlug}.html` : '#';
 
+  let postNav = '';
+  if (content.prevSlug || content.nextSlug) {
+    const prevHtml = content.prevSlug
+      ? `<a href="/posts/${content.prevSlug}.html" class="prev">
+                <span class="nav-label">← Previous</span>
+                <span class="nav-title">${escapeHtml(content.prevTitle || '上一篇')}</span>
+            </a>`
+      : '';
+    const nextHtml = content.nextSlug
+      ? `<a href="/posts/${content.nextSlug}.html" class="next">
+                <span class="nav-label">Next →</span>
+                <span class="nav-title">${escapeHtml(content.nextTitle || '下一篇')}</span>
+            </a>`
+      : '';
+    postNav = `<div class="post-nav">
+            ${prevHtml}
+            ${nextHtml}
+        </div>`;
+  }
+
   let html = template;
   const replacements = {
     '{{TITLE}}': escapeHtml(content.title),
@@ -86,6 +106,7 @@ async function renderArticle(slug, request, env) {
     '{{CONTENT}}': content.body || '',
     '{{FOOTNOTES}}': content.footnotes || '',
     '{{TAGS}}': renderTags(content.tags),
+    '{{POST_NAV}}': postNav,
     '{{PREV_URL}}': prevUrl,
     '{{PREV_TITLE}}': escapeHtml(content.prevTitle || '上一篇'),
     '{{NEXT_URL}}': nextUrl,
